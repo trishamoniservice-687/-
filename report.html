@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBN SINA Report</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+
+body{
+    background:#e8e8e8;
+    font-family: Arial, sans-serif;
+    padding:20px;
+}
+
+.report-box{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+.header{
+    text-align:center;
+    border-bottom:2px solid #999;
+    padding-bottom:10px;
+}
+.header img{
+    width:80px;
+}
+.center-name{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:5px;
+}
+.address{
+    font-size:13px;
+    line-height:1.4;
+    margin-top:5px;
+}
+
+.title{
+    margin-top:20px;
+    padding:8px 0;
+    border:2px solid #444;
+    font-size:18px;
+    text-align:center;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    font-size:15px;
+}
+table td, table th{
+    border:1px solid #aaa;
+    padding:7px;
+}
+table th{
+    background:#f0f0f0;
+}
+
+.section-title{
+    font-size:16px;
+    font-weight:bold;
+    margin-top:30px;
+    margin-bottom:5px;
+    padding-bottom:4px;
+    border-bottom:1px solid #777;
+}
+
+.sign{
+    width:150px;
+    margin-top:10px;
+}
+
+.footer{
+    margin-top:40px;
+    font-size:13px;
+    text-align:center;
+    border-top:1px solid #999;
+    padding-top:10px;
+}
+
+.download-btn{
+    width:200px;
+    margin:20px auto;
+    display:block;
+    padding:12px;
+    text-align:center;
+    background:#007b5e;
+    color:white;
+    border-radius:6px;
+    font-size:18px;
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="#" class="download-btn" onclick="downloadPDF()">Download PDF</a>
+
+<div class="report-box" id="report">
+
+    <div class="header">
+        <img src="sign.png" alt="">
+        <div class="center-name">IBN SINA DIAGNOSTIC & CONSULTATION CENTER, SAVAR</div>
+        <div class="address">
+            House # B-3/16, Jaleshwar, Savar, Dhaka<br>
+            Phone: 01844-147115 • Email: ibnsinasavar@gmail.com<br>
+            Web: www.ibnsinatrust.com
+        </div>
+    </div>
+
+    <div class="title">IMMUNOLOGY REPORT</div>
+
+    <div class="section-title">Patient Information</div>
+
+    <table>
+        <tr><td><b>ID:</b> <span id="id"></span></td><td><b>Name:</b> <span id="name"></span></td></tr>
+        <tr><td><b>Ref. By:</b> <span id="ref"></span></td><td><b>Age:</b> <span id="age"></span> — <b>Sex:</b> <span id="sex"></span></td></tr>
+        <tr><td><b>Collected on:</b> <span id="collected"></span></td><td><b>Reported on:</b> <span id="reported"></span></td></tr>
+    </table>
+
+    <div class="section-title">Test Result</div>
+
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Result</th>
+            <th>Reference Value</th>
+            <th>Method</th>
+        </tr>
+        <tr>
+            <td id="test"></td>
+            <td id="result"></td>
+            <td id="refvalue"></td>
+            <td>Automated Analyzer</td>
+        </tr>
+    </table>
+
+    <div class="section-title">Authorized By</div>
+
+    <table>
+        <tr>
+            <td>
+                <img src="sign.png" class="sign"><br>
+                <b>Md. Sohag Hossain</b><br>Biochemist
+            </td>
+            <td>
+                <img src="sign.png" class="sign"><br>
+                <b>Md. Fahad Hossain</b><br>Biochemist
+            </td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        This is a system-generated PDF report. Page 1 of 1.
+    </div>
+
+</div>
+
+
+<script>
+// URL Params Fill
+const url = new URLSearchParams(window.location.search);
+
+document.getElementById("id").innerText = url.get("id");
+document.getElementById("name").innerText = url.get("name");
+document.getElementById("ref").innerText = url.get("ref");
+document.getElementById("age").innerText = url.get("age");
+document.getElementById("sex").innerText = url.get("sex");
+document.getElementById("test").innerText = url.get("test");
+document.getElementById("result").innerText = url.get("result");
+document.getElementById("refvalue").innerText = url.get("refvalue");
+document.getElementById("collected").innerText = url.get("collected");
+document.getElementById("reported").innerText = url.get("reported");
+
+// PDF Generator
+function downloadPDF(){
+    const element = document.getElementById("report");
+    html2pdf().from(element).save("IBN_SINA_Report.pdf");
+}
+</script>
+
+</body>
+</html>
