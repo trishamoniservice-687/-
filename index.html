@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Medical Report</title>
+
+<style>
+body{
+    background:#f0f0f0;
+    font-family:Arial, sans-serif;
+    padding:20px;
+}
+.form-box{
+    width:500px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 8px rgba(0,0,0,0.2);
+}
+.form-box h2{
+    text-align:center;
+}
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:1px solid #aaa;
+    border-radius:5px;
+    font-size:15px;
+}
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    font-size:16px;
+    background:#007b5e;
+    border:0;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+    <h2>Create IBN SINA Style Report</h2>
+
+    <form action="report.html" method="GET">
+        <input type="text" name="id" placeholder="রিপোর্ট আইডি" required>
+        <input type="text" name="name" placeholder="রোগীর নাম" required>
+        <input type="text" name="ref" placeholder="ডাক্তারের নাম" required>
+        <input type="text" name="age" placeholder="বয়স" required>
+        <select name="sex">
+            <option value="Male">Male</option>
+            <option value="Female" selected>Female</option>
+        </select>
+        <input type="text" name="test" placeholder="টেস্টের নাম (যেমন: CPK)" required>
+        <input type="text" name="result" placeholder="টেস্ট রেজাল্ট (যেমন: 120 U/L)" required>
+        <input type="text" name="refvalue" placeholder="নরমাল ভ্যালু" required>
+        <input type="text" name="collected" placeholder="Blood Collected Time" required>
+        <input type="text" name="reported" placeholder="Report Created Time" required>
+
+        <button type="submit">Generate Report</button>
+    </form>
+</div>
+
+</body>
+</html>
